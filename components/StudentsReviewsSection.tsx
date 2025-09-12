@@ -111,7 +111,7 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
-  const autoPlayRef = useRef<NodeJS.Timeout>();
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Responsive slide width and spacing
