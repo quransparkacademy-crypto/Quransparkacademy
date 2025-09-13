@@ -93,26 +93,25 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {/* Primary Button */}
-{/* Primary Button */}
-<Link
-  href={heroData.primary_button_link}
-  className="px-4 py-2 font-body font-semibold rounded hover:scale-105 transition-transform duration-200"
-  style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-dark)' }}
->
-  {heroData.primary_button_text}
-</Link>
+            {/* Primary Button */}
+            <Link
+              href={heroData.primary_button_link}
+              className="px-4 py-2 font-body font-semibold rounded hover:scale-105 transition-transform duration-200"
+              style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-dark)' }}
+            >
+              {heroData.primary_button_text}
+            </Link>
 
-{/* Secondary Button */}
-<Link
-  href={heroData.secondary_button_link}
-  className="inline-flex items-center px-4 py-2 font-body font-semibold border border-blue-300 text-blue-100 hover:bg-blue-50 hover:text-blue-900 transition-colors duration-200 rounded"
->
-  {heroData.secondary_button_text}
-  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
-</Link>
+            {/* Secondary Button */}
+            <Link
+              href={heroData.secondary_button_link}
+              className="inline-flex items-center px-4 py-2 font-body font-semibold border border-blue-300 text-blue-100 hover:bg-blue-50 hover:text-blue-900 transition-colors duration-200 rounded"
+            >
+              {heroData.secondary_button_text}
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
             </div>
 
             {/* Trust Indicators */}

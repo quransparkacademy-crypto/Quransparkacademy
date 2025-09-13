@@ -179,7 +179,7 @@ export default function Navbar() {
 
             {/* Student Login */}
             <Link 
-              href="/login"
+              href="#"
               className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 text-sm font-body group"
               style={{ color: 'var(--color-accent)' }}
             >
@@ -282,7 +282,7 @@ export default function Navbar() {
                 
                 {/* Mobile CTA Button */}
                 <Link
-                  href="/free-trial"
+                  href="#"
                   className="mx-4 mt-4 px-6 py-3 text-center rounded-full font-body font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
                   style={{ backgroundColor: 'var(--color-primary)' }}
                   onClick={() => setIsMenuOpen(false)}
