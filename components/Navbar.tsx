@@ -232,12 +232,11 @@ export default function Navbar() {
               
               {/* CTA Button */}
               <Link
-                href="/free-trial"
-                className="relative px-6 py-3 rounded-full font-body font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 overflow-hidden group"
+                href="#"
+                className="inline-flex items-center px-4 py-2 rounded font-body font-semibold text-white hover:scale-105 transition-transform duration-200"
                 style={{ backgroundColor: 'var(--color-primary)' }}
               >
-                <span className="relative z-10">Start Free Trial</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                Start Free Trial
               </Link>
             </div>
 

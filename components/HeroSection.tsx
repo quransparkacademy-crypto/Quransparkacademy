@@ -93,24 +93,26 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link
-                href={heroData.primary_button_link}
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-body font-semibold text-lg transition-all duration-300 rounded-full overflow-hidden"
-                style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-dark)' }}
-              >
-                <span className="relative z-10">{heroData.primary_button_text}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </Link>
-              
-              <Link
-                href={heroData.secondary_button_link}
-                className="group inline-flex items-center justify-center px-8 py-4 font-body font-semibold text-lg border-2 border-blue-300 text-blue-100 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 rounded-full"
-              >
-                {heroData.secondary_button_text}
-                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </Link>
+              {/* Primary Button */}
+{/* Primary Button */}
+<Link
+  href={heroData.primary_button_link}
+  className="px-4 py-2 font-body font-semibold rounded hover:scale-105 transition-transform duration-200"
+  style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-dark)' }}
+>
+  {heroData.primary_button_text}
+</Link>
+
+{/* Secondary Button */}
+<Link
+  href={heroData.secondary_button_link}
+  className="inline-flex items-center px-4 py-2 font-body font-semibold border border-blue-300 text-blue-100 hover:bg-blue-50 hover:text-blue-900 transition-colors duration-200 rounded"
+>
+  {heroData.secondary_button_text}
+  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  </svg>
+</Link>
             </div>
 
             {/* Trust Indicators */}

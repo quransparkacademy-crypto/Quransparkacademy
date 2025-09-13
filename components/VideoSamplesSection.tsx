@@ -139,10 +139,10 @@ export default function VideoSamplesSection() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
             <Video className="w-5 h-5 text-purple-600" />
             <span className="text-purple-800 font-body font-medium text-sm">Learning Examples</span>
-          </div>
+          </div> */}
 
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
@@ -285,10 +285,11 @@ export default function VideoSamplesSection() {
         <div className="text-center mt-12">
           <Link
             href={sectionData.cta_button_link}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-body font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            className="group relative inline-flex items-center gap-3 px-6 py-2 bg-[var(--color-accent)] text-white font-body font-semibold text-lg rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <span>{sectionData.cta_button_text}</span>
-            <Play className="w-5 h-5" />
+            <Play className="w-5 h-5 ml-0.5 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            <span className="relative z-10">{sectionData.cta_button_text}</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
           
           <p className="mt-4 text-sm text-gray-600 font-body">

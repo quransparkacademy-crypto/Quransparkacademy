@@ -122,9 +122,9 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
       if (width < 768) return { slideWidth: 320, spacing: 20, visibleSlides: 1.5 }; // Small tablet
       if (width < 1024) return { slideWidth: 340, spacing: 24, visibleSlides: 2.2 }; // Tablet
       if (width < 1280) return { slideWidth: 360, spacing: 28, visibleSlides: 3.2 }; // Desktop
-      return { slideWidth: 380, spacing: 32, visibleSlides: 4.0 }; // Large desktop
+      return { slideWidth: 480, spacing: 32, visibleSlides: 4.0 }; // Large desktop
     }
-    return { slideWidth: 360, spacing: 24, visibleSlides: 3.2 };
+    return { slideWidth: 460, spacing: 24, visibleSlides: 3.2 };
   };
 
   const [slideConfig, setSlideConfig] = useState(getSlideConfig());
@@ -218,7 +218,7 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
                 }`}
                 style={{
                   width: `${slideConfig.slideWidth}px`,
-                  height: '80%'
+                  height: '90%'
                 }}
               >
                 {/* Image Container */}
@@ -236,12 +236,6 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
                     priority={index < 5}
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-500 ${
-                    isActive 
-                      ? 'from-black/60 via-black/10 to-transparent opacity-100' 
-                      : 'from-black/80 via-black/30 to-transparent opacity-60'
-                  }`}></div>
                   
                   {/* Slide Number Badge */}
                   <div className="absolute top-4 left-4">
@@ -262,42 +256,7 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
                     </div>
                   </div>
 
-                  {/* Review Info Overlay */}
-                  <div className={`absolute bottom-0 left-0 right-0 p-4 transform transition-all duration-500 ${
-                    isActive 
-                      ? 'translate-y-0 opacity-100' 
-                      : 'translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100'
-                  }`}>
-                    <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 shadow-xl">
-                      {/* Rating Stars */}
-                      <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-1">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Heart className="w-4 h-4 text-red-500 fill-current" />
-                          <span className="text-sm font-semibold text-gray-700">5.0</span>
-                        </div>
-                      </div>
-                      
-                      {/* Student Info */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-                            <Users className="w-3 h-3 text-white" />
-                          </div>
-                          <span className="text-sm font-semibold text-gray-700">
-                            Verified Student
-                          </span>
-                        </div>
-                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-                          #{image.order_index}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  
 
                   {/* Shine Effect for Active Slide */}
                   {isActive && (

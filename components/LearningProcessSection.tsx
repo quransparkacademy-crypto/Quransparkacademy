@@ -140,11 +140,6 @@ export default function LearningProcessSection() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full mb-6">
-            <PlayCircle className="w-5 h-5 text-green-600" />
-            <span className="text-green-800 font-body font-medium text-sm">Get Started Today</span>
-          </div>
-
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
               {sectionData.title}
@@ -257,16 +252,18 @@ export default function LearningProcessSection() {
         <div className="text-center mt-16">
           <Link
             href={sectionData.cta_button_link}
-            className="group inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-body font-bold text-xl rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+            className="group inline-flex items-center overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <span>{sectionData.cta_button_text}</span>
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300">
+            <span className="px-6 py-4 bg-[var(--color-primary)] text-[var(--color-dark)] font-body font-bold text-lg transition-colors duration-300 group-hover:bg-[var(--color-secondary)] group-hover:text-white">
+              {sectionData.cta_button_text}
+            </span>
+            <div className="px-4 py-4 bg-[var(--color-accent)] text-white group-hover:bg-[var(--color-dark)] transition-colors duration-300">
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </Link>
 
           {/* Additional Benefits */}
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600 font-body">
+          {/* <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600 font-body">
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-500" />
               <span>100% Free Trial</span>
@@ -279,7 +276,7 @@ export default function LearningProcessSection() {
               <CheckCircle className="w-5 h-5 text-green-500" />
               <span>Expert Teachers</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
