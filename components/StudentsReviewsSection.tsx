@@ -440,7 +440,7 @@ export default function StudentsReviewsSection() {
           </div>
 
           {/* Professional Title */}
-          <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight">
             <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
               {section.section_title}
             </span>
@@ -521,14 +521,14 @@ export default function StudentsReviewsSection() {
               {/* Satisfaction Rate */}
               <div className="text-center group">
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-20 h-20 bg-[var(--color-accent)] from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
                     <TrendingUp className="w-10 h-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
+                  <div className="absolute inset-0 w-20 h-20 bg-[var(--color-accent)]  to-teal-600 rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
                 </div>
-                <div className="font-heading text-4xl sm:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-teal-700 bg-clip-text text-transparent mb-2">98%</div>
+                <div className="font-heading text-4xl sm:text-5xl font-bold bg-[var(--color-accent)] to-teal-700 bg-clip-text text-transparent mb-2">98%</div>
                 <div className="font-body text-lg text-gray-600 font-medium">Satisfaction</div>
-                <div className="w-16 h-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+                <div className="w-16 h-1 bg-[var(--color-accent)] rounded-full mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
               </div>
             </div>
           </div>
@@ -538,20 +538,13 @@ export default function StudentsReviewsSection() {
         <div className="text-center mb-20">
           <div className="relative inline-block">
             <Link
-              href={section.cta_button_link}
-              className="group relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 text-white font-bold text-xl sm:text-2xl rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 transition-all duration-500 overflow-hidden"
-            >
-              {/* Button Background Animation */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 via-green-700 to-teal-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <span className="relative z-10">{section.cta_button_text}</span>
-              <div className="relative z-10 w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 group-hover:rotate-45 transition-all duration-500">
-                <ChevronRight className="w-6 h-6" />
-              </div>
-              
-              {/* Shine Effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000"></div>
-            </Link>
+            href={section.cta_button_link}
+            className="group relative inline-flex items-center gap-3 px-6 py-2 bg-[var(--color-accent)] text-white font-body font-semibold text-lg rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <Play className="w-5 h-5 ml-0.5 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            <span className="relative z-10">{section.cta_button_text}</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </Link>
             
             {/* Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 rounded-2xl opacity-30 blur-xl scale-110 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"></div>
