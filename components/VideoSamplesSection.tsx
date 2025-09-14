@@ -130,7 +130,7 @@ export default function VideoSamplesSection() {
   if (!sectionData) return null;
 
   return (
-    <section id='samples' className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+    <section id='samples' className="py-8 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-purple-100/30 to-pink-100/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-blue-100/40 to-indigo-100/40 rounded-full blur-3xl"></div>
@@ -138,20 +138,20 @@ export default function VideoSamplesSection() {
       <div className="relative max-w-7xl mx-auto px-4">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-4">
           {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
             <Video className="w-5 h-5 text-purple-600" />
             <span className="text-purple-800 font-body font-medium text-sm">Learning Examples</span>
           </div> */}
 
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
               {sectionData.section_title}
             </span>
           </h2>
 
           {/* Custom Divider */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
+          <div className="flex items-center justify-center space-x-4 mb-4">
             <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-amber-400"></div>
             <div className="w-3 h-3 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full"></div>
             <div className="w-6 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-500"></div>
@@ -282,7 +282,7 @@ export default function VideoSamplesSection() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-6">
           <Link
             href={sectionData.cta_button_link}
             className="group relative inline-flex items-center gap-3 px-6 py-2 bg-[var(--color-accent)] text-white font-body font-semibold text-lg rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
@@ -291,10 +291,6 @@ export default function VideoSamplesSection() {
             <span className="relative z-10">{sectionData.cta_button_text}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
-          
-          <p className="mt-4 text-sm text-gray-600 font-body">
-            Start your free trial and access our complete video library
-          </p>
         </div>
       </div>
     </section>

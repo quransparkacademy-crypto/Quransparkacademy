@@ -45,7 +45,7 @@ export default function VisionMissionSectionSimple() {
   if (!visionData) return null;
 
   return (
-    <section id='Vision_Mission' className="relative py-20 overflow-hidden">
+    <section id='Vision_Mission' className="relative py-14 overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-gray-900/80 to-slate-900/85 z-10"></div>
@@ -59,7 +59,7 @@ export default function VisionMissionSectionSimple() {
       </div>
 
       <div className="relative z-20 max-w-4xl mx-auto px-4 text-center">
-        <div className="space-y-8">
+        <div className="space-y-2">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
             <span className="bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
               {visionData.title}
@@ -71,7 +71,7 @@ export default function VisionMissionSectionSimple() {
             <div className="w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 md:p-12">
             <p className="font-body text-xl md:text-2xl text-white leading-relaxed">
               <strong>{visionData.vision_text}</strong>
             </p>

@@ -122,7 +122,7 @@ export default function CoursesSection() {
   if (!sectionData) return null;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden" id="courses">
+    <section className="py-12 sm:py-10 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden" id="courses">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-100/30 to-indigo-100/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-amber-100/40 to-yellow-100/40 rounded-full blur-3xl"></div>
@@ -130,20 +130,16 @@ export default function CoursesSection() {
       <div className="relative max-w-7xl mx-auto px-4">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full mb-6">
-            <BookOpen className="w-5 h-5 text-blue-600" />
-            <span className="text-blue-800 font-body font-medium text-sm">Educational Excellence</span>
-          </div>
+        <div className="text-center mb-4">
 
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
             <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
               {sectionData.section_title}
             </span>
           </h2>
 
           {sectionData.section_subtitle && (
-            <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               {sectionData.section_subtitle}
             </p>
           )}
@@ -159,7 +155,7 @@ export default function CoursesSection() {
         </div>
 
         {/* Course Tabs */}
-        <div className="mb-12">
+        <div className="mb-8">
           <div className="flex flex-wrap justify-center gap-2 bg-white/70 backdrop-blur-sm p-2 rounded-2xl shadow-lg border border-white/20">
             {courses.map((course, index) => {
               const icons = [
@@ -194,11 +190,11 @@ export default function CoursesSection() {
             <div className="grid lg:grid-cols-2 gap-0">
               
               {/* Content Side */}
-              <div className="p-8 lg:p-12 order-2 lg:order-1">
-                <div className="space-y-8">
+              <div className="p-4 lg:p-12 order-2 lg:order-1">
+                <div className="space-y-2">
                   
                   {/* Course Title */}
-                  <div className="space-y-4">
+                  <div className="space-y-2">
                     <h3 className="font-heading text-3xl lg:text-4xl font-bold text-gray-900">
                       {activeCourse.title}
                     </h3>
@@ -214,11 +210,11 @@ export default function CoursesSection() {
 
                   {/* Course Outlines */}
                   {courseOutlines[activeCourse.id] && (
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       <h4 className="font-heading text-xl font-bold text-gray-900">Course Outlines</h4>
-                      <div className="grid gap-3">
+                      <div className="grid">
                         {courseOutlines[activeCourse.id].map((outline) => (
-                          <div key={outline.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-300">
+                          <div key={outline.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-300">
                             <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
                               <Check className="w-4 h-4 text-white" />
                             </div>
@@ -230,17 +226,17 @@ export default function CoursesSection() {
                   )}
 
                   {/* CTA Button */}
-                  <div className="pt-6">
+                  {/* <div className="pt-2">
                     <Link
                       href={activeCourse.button_link}
-                      className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-body font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                      className="group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-body font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                     >
                       <span>{activeCourse.button_text}</span>
                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -272,22 +268,22 @@ export default function CoursesSection() {
         )}
 
         {/* Trust Indicators */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { icon: <Users className="w-8 h-8" />, number: '1000+', label: 'Active Students' },
-            { icon: <GraduationCap className="w-8 h-8" />, number: '50+', label: 'Expert Teachers' },
-            { icon: <BookOpen className="w-8 h-8" />, number: '4', label: 'Course Categories' },
-            { icon: <Globe className="w-8 h-8" />, number: '24/7', label: 'Support Available' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="font-heading text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
-              <div className="font-body text-gray-600 text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+  {[
+    { IconComponent: Users, number: '1000+', label: 'Active Students' },
+    { IconComponent: GraduationCap, number: '50+', label: 'Expert Teachers' },
+    { IconComponent: BookOpen, number: '4', label: 'Course Categories' },
+    { IconComponent: Globe, number: '24/7', label: 'Support Available' },
+  ].map((stat, index) => (
+    <div key={index} className="text-center group">
+      <div className="inline-flex items-center justify-center w-12 h-12 md:w-18 md:h-18 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+        <stat.IconComponent className="w-4 h-4 md:w-8 md:h-8" />
+      </div>
+      <div className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
+      <div className="font-body text-gray-600 text-sm">{stat.label}</div>
+    </div>
+  ))}
+</div>
       </div>
     </section>
   );

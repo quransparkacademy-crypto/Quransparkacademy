@@ -45,9 +45,7 @@ export default function Navbar() {
           id: '1',
           logo_url: '/images/logo.png',
           logo_alt: 'Qarabic Academy',
-          email: 'info@qarabic.com',
-          phone: '+1 (309) 377-5300',
-          whatsapp: '+1 (309) 377-5300',
+          encouraging_words: 'Learn Quran with Tajweed',
           created_at: '',
           updated_at: ''
         });
@@ -147,34 +145,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center py-3 space-y-2 md:space-y-0">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-sm">
-              {/* Email */}
-              <a 
-                href={`mailto:${navbarData.email}`}
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-body group"
-              >
-                <Mail className="w-4 h-4 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
-                <span>{navbarData.email}</span>
-              </a>
-
-              {/* Phone */}
-              <a 
-                href={`tel:${navbarData.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-body group"
-              >
-                <Phone className="w-4 h-4 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
-                <span>{navbarData.phone}</span>
-              </a>
-
-              {/* WhatsApp */}
-              <a 
-                href={`https://wa.me/${navbarData.whatsapp.replace(/\D/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors duration-300 font-body group"
-              >
-                <MessageCircle className="w-4 h-4 text-green-600 group-hover:scale-110 transition-transform duration-300" />
-                <span>{navbarData.whatsapp}</span>
-              </a>
+              
+              <div className="font-body text-xl flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-body group">
+                {navbarData.encouraging_words}
+              </div>
+              
             </div>
 
             {/* Student Login */}
@@ -197,7 +172,7 @@ export default function Navbar() {
             
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 group">
-              <div className="relative h-16 w-48 group-hover:scale-105 transition-transform duration-300">
+              <div className="relative h-16 w-40 group-hover:scale-105 transition-transform duration-300">
                 <Image
                   src={navbarData.logo_url}
                   alt={navbarData.logo_alt}
@@ -261,7 +236,7 @@ export default function Navbar() {
           <div className={`lg:hidden transition-all duration-500 ease-in-out ${
             isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           } overflow-hidden`}>
-            <div className="py-4 border-t border-gray-100">
+            <div className="pb-2 border-t border-gray-100">
               <div className="flex flex-col space-y-2">
                 {navigationItems.map((item) => (
                   <Link
@@ -270,7 +245,7 @@ export default function Navbar() {
                     target={item.is_external ? '_blank' : '_self'}
                     rel={item.is_external ? 'noopener noreferrer' : ''}
                     onClick={(e) => handleSmoothScroll(e, item.href)}
-                    className={`px-4 py-3 font-body font-medium transition-all duration-300 rounded-lg mx-2 ${
+                    className={`px-4 py-2 font-body font-medium transition-all duration-300 rounded-lg mx-2 ${
                       isActiveNavItem(item.href)
                         ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-500'
                         : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
@@ -283,9 +258,8 @@ export default function Navbar() {
                 {/* Mobile CTA Button */}
                 <Link
                   href="#"
-                  className="mx-4 mt-4 px-6 py-3 text-center rounded-full font-body font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="inline-flex items-center px-4 py-2 rounded font-body font-semibold text-white hover:scale-105 transition-transform duration-200"
                   style={{ backgroundColor: 'var(--color-primary)' }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Start Free Trial
                 </Link>

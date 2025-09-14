@@ -49,7 +49,7 @@ export default function HeroSection() {
 
   if (loading) {
     return (
-      <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+      <section className="min-h-[85vh] bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
         <div className="animate-pulse text-xl font-body text-gray-600">Loading...</div>
       </section>
     );
@@ -66,20 +66,20 @@ export default function HeroSection() {
       <div className="absolute top-20 right-10 w-64 h-64 bg-gradient-to-r from-yellow-400/20 to-amber-500/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-indigo-600/10 rounded-full blur-3xl"></div>
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-screen">
+      <div className="relative w-full max-w-7xl mx-auto px-4 py-14 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center min-h-screen">
           
           {/* Left Column - Content */}
-          <div className="order-2 lg:order-1 space-y-8">
+          <div className="order-2 lg:order-1 space-y-4">
             <div className="space-y-4">
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span 
                   className="block bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent"
                   style={{ color: 'var(--color-primary)' }}
                 >
                   {heroData.title}
                 </span>
-                <span className="block text-white mt-2">
+                <span className="font-heading block text-white mt-2">
                   {heroData.subtitle}
                 </span>
               </h1>
@@ -92,15 +92,15 @@ export default function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-2 ">
             {/* Primary Button */}
-            <Link
+            {/* <Link
               href={heroData.primary_button_link}
               className="px-4 py-2 font-body font-semibold rounded hover:scale-105 transition-transform duration-200"
               style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-dark)' }}
             >
               {heroData.primary_button_text}
-            </Link>
+            </Link> */}
 
             {/* Secondary Button */}
             <Link
@@ -143,7 +143,7 @@ export default function HeroSection() {
               
               {/* Main Image Container */}
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
-                <div className="aspect-[3/3] relative">
+                <div className="aspect-[4/3] relative">
                   <Image
                     src={heroData.hero_image_url}
                     alt={heroData.hero_image_alt}
@@ -159,7 +159,7 @@ export default function HeroSection() {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full opacity-20 animate-pulse"></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-30 animate-bounce"></div>
             </div>
           </div>

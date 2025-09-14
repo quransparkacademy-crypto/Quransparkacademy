@@ -68,7 +68,7 @@ export default function WhyUsSection() {
   if (!whyUsData) return null;
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden" id="why_us">
+    <section className="relative py-14 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden" id="why_us">
       {/* Background Decorations */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-amber-100/30 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-r from-blue-100/40 to-transparent rounded-full blur-3xl"></div>
@@ -77,7 +77,7 @@ export default function WhyUsSection() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23164783%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
 
       <div className="relative max-w-7xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left Column - Image */}
           <div className="relative order-2 lg:order-1">
@@ -86,7 +86,7 @@ export default function WhyUsSection() {
               <div className="absolute -inset-4 bg-gradient-to-r from-amber-200/20 to-blue-200/20 rounded-3xl blur-lg"></div>
               
               {/* Main Image Container */}
-              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden p-8">
+              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden" style={{ padding: '20%' }}>
                 <div className="aspect-square relative">
                   <Image
                     src={whyUsData.image_url}
@@ -96,24 +96,16 @@ export default function WhyUsSection() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute top-6 right-6 bg-gradient-to-r from-amber-400 to-yellow-500 text-white px-4 py-2 rounded-full shadow-lg">
-                  <div className="flex items-center gap-2 text-sm font-body font-semibold">
-                    <Star className="w-4 h-4" />
-                    <span>Premium Quality</span>
-                  </div>
-                </div>
               </div>
 
               {/* Floating Stats */}
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                    <Users className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-heading font-bold text-gray-900">1000+</div>
+                    <div className="text-xl font-heading font-bold text-gray-900">1000+</div>
                     <div className="text-sm text-gray-600 font-body">Happy Students</div>
                   </div>
                 </div>
@@ -121,11 +113,11 @@ export default function WhyUsSection() {
 
               <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full flex items-center justify-center">
+                    <Clock className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-heading font-bold text-gray-900">24/7</div>
+                    <div className="text-xl font-heading font-bold text-gray-900">24/7</div>
                     <div className="text-sm text-gray-600 font-body">Support</div>
                   </div>
                 </div>
@@ -135,14 +127,14 @@ export default function WhyUsSection() {
 
           {/* Right Column - Content */}
           <div className="order-1 lg:order-2 space-y-8">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-full">
+            <div className="space-y-2">
+              <div className="space-y-2">
+                {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-full">
                   <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full animate-pulse"></div>
                   <span className="text-sm font-body font-medium" style={{ color: 'var(--color-secondary)' }}>
                     Excellence in Islamic Education
                   </span>
-                </div>
+                </div> */}
                 
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                   <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
@@ -158,7 +150,7 @@ export default function WhyUsSection() {
               </p>
 
               {/* Highlights */}
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-2">
                 {whyUsData.highlights.map((highlight, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
@@ -171,7 +163,7 @@ export default function WhyUsSection() {
             </div>
 
             {/* CTA Button */}
-            <div className="pt-6">
+            <div className="sm:pt-2 md:pt-2 lg:pt-6">
               <Link
                 href={whyUsData.button_link}
                 className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-body font-semibold rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
@@ -184,7 +176,7 @@ export default function WhyUsSection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-6 pt-6 text-gray-600">
+            <div className="flex flex-wrap items-center sm:gap-4 md:gap-4 lg:gap-6 md:pt-2 lg:pt-6 text-gray-600">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-1">
                   {[...Array(5)].map((_, i) => (
@@ -192,10 +184,6 @@ export default function WhyUsSection() {
                   ))}
                 </div>
                 <span className="text-sm font-body">5-Star Rated</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm font-body">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Trusted by 1000+ families worldwide</span>
               </div>
             </div>
           </div>

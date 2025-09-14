@@ -2,9 +2,7 @@ export interface NavbarData {
   id: string;
   logo_url: string;
   logo_alt: string;
-  email: string;
-  phone: string;
-  whatsapp: string;
+  encouraging_words: string;
   created_at: string;
   updated_at: string;
 }

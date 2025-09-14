@@ -418,7 +418,7 @@ export default function StudentsReviewsSection() {
   const { section, images, navigation } = data;
 
   return (
-    <section className="w-full py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden" id="reviews">
+    <section className="w-full py-12 sm:py-20 lg:py-12 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden" id="reviews">
       {/* Full-width Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-l from-blue-100/40 via-indigo-50/20 to-transparent rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
@@ -429,25 +429,17 @@ export default function StudentsReviewsSection() {
       <div className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Professional Section Header - Hidden on mobile as per original */}
-        <div className="text-center mb-20 hidden md:block">
-          {/* Premium Badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-full mb-8 shadow-lg">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full flex items-center justify-center">
-              <MessageCircle className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-blue-800 font-semibold text-lg">Student Testimonials</span>
-            <div className="w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full animate-pulse"></div>
-          </div>
+        <div className="text-center mb-12 hidden md:block">
 
           {/* Professional Title */}
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight">
             <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
               {section.section_title}
             </span>
           </h2>
 
           {/* Elegant Divider */}
-          <div className="flex items-center justify-center mb-10">
+          <div className="flex items-center justify-center mb-4">
             <div className="flex items-center space-x-4">
               <div className="w-24 h-px bg-gradient-to-r from-transparent via-blue-400 to-blue-600"></div>
               <div className="relative">
@@ -474,85 +466,64 @@ export default function StudentsReviewsSection() {
         </div>
 
         {/* Creative Horizontal Slider */}
-        <div className="mb-32">
+        <div className="mb-8">
           <CreativeHorizontalSlider images={images} />
         </div>
 
         {/* Premium Statistics Section */}
-        <div className="relative mb-24">
-          <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/50">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+        <div className="relative mb-4 sm:mb-8">
+          <div className="bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl border border-white/50">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 md:gap-12">
               {/* Happy Students */}
               <div className="text-center group">
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Users className="w-10 h-10 text-white" />
+                <div className="relative mb-4 sm:mb-6">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
+                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
                 </div>
-                <div className="font-heading text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent mb-2">
+                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent mb-1 sm:mb-2">
                   {images.length}+
                 </div>
-                <div className="font-body text-lg text-gray-600 font-medium">Happy Students</div>
-                <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Happy Students</div>
+                <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
               </div>
               
               {/* Average Rating */}
               <div className="text-center group">
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
-                    <div className="flex items-center gap-1">
+                <div className="relative mb-4 sm:mb-6">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className="w-3 h-3 text-white fill-current group-hover:scale-110 transition-transform duration-300" 
+                          className="w-2.5 h-2.5 sm:w-2 sm:h-2 text-white fill-current group-hover:scale-110 transition-transform duration-300" 
                           style={{ animationDelay: `${i * 100}ms` }}
                         />
                       ))}
                     </div>
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
+                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
                 </div>
-                <div className="font-heading text-4xl sm:text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-700 bg-clip-text text-transparent mb-2">4.9</div>
-                <div className="font-body text-lg text-gray-600 font-medium">Average Rating</div>
-                <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-700 bg-clip-text text-transparent mb-1 sm:mb-2">4.9</div>
+                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Average Rating</div>
+                <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
               </div>
               
               {/* Satisfaction Rate */}
               <div className="text-center group">
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-[var(--color-accent)] from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <TrendingUp className="w-10 h-10 text-white" />
+                <div className="relative mb-4 sm:mb-6">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[var(--color-accent)] from-emerald-500 to-teal-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 bg-[var(--color-accent)]  to-teal-600 rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
+                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-[var(--color-accent)] to-teal-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
                 </div>
-                <div className="font-heading text-4xl sm:text-5xl font-bold bg-[var(--color-accent)] to-teal-700 bg-clip-text text-transparent mb-2">98%</div>
-                <div className="font-body text-lg text-gray-600 font-medium">Satisfaction</div>
-                <div className="w-16 h-1 bg-[var(--color-accent)] rounded-full mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-[var(--color-accent)] to-teal-700 bg-clip-text text-transparent mb-1 sm:mb-2">98%</div>
+                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Satisfaction</div>
+                <div className="w-12 sm:w-16 h-1 bg-[var(--color-accent)] rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Premium Call to Action */}
-        <div className="text-center mb-20">
-          <div className="relative inline-block">
-            <Link
-            href={section.cta_button_link}
-            className="group relative inline-flex items-center gap-3 px-6 py-2 bg-[var(--color-accent)] text-white font-body font-semibold text-lg rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <Play className="w-5 h-5 ml-0.5 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-            <span className="relative z-10">{section.cta_button_text}</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Link>
-            
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 rounded-2xl opacity-30 blur-xl scale-110 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"></div>
-          </div>
-          
-          <p className="mt-8 text-lg sm:text-xl text-gray-600 font-medium max-w-2xl mx-auto">
-            Join thousands of satisfied students and parents worldwide in their Arabic learning journey
-          </p>
         </div>
 
         {/* Professional Footer Section */}

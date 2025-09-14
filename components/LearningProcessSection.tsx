@@ -128,7 +128,7 @@ export default function LearningProcessSection() {
   ];
 
   return (
-    <section id='Learning_Process' className="py-20 bg-white relative overflow-hidden">
+    <section id='Learning_Process' className="py-12 bg-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-blue-50 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-r from-amber-50 to-transparent rounded-full blur-3xl"></div>
@@ -185,16 +185,16 @@ export default function LearningProcessSection() {
                     </div>
                   </div>
 
-                  <div className="pt-8 pb-8 px-8 text-center">
+                  <div className="pt-6 pb-6 px-6 text-center">
                     
                     {/* Step Image */}
-                    <div className="relative w-48 h-48 mx-auto mb-6 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-40 h-40 mx-auto mb-6 group-hover:scale-105 transition-transform duration-500">
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full opacity-20"></div>
                       <Image
                         src={step.image_url}
                         alt={step.image_alt}
                         fill
-                        className="object-contain p-6"
+                        className="object-contain p-12"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                       
@@ -207,7 +207,7 @@ export default function LearningProcessSection() {
                     </div>
 
                     {/* Step Content */}
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       <h3 className="font-heading text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                         {step.title}
                       </h3>
@@ -218,7 +218,7 @@ export default function LearningProcessSection() {
                     </div>
 
                     {/* Step Progress Indicator */}
-                    <div className="mt-6 flex justify-center">
+                    <div className="mt-2 flex justify-center">
                       <div className="flex space-x-2">
                         {processSteps.map((_, stepIndex) => (
                           <div
@@ -249,7 +249,7 @@ export default function LearningProcessSection() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-6">
           <Link
             href={sectionData.cta_button_link}
             className="group inline-flex items-center overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
