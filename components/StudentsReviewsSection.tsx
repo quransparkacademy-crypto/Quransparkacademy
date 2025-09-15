@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { StudentsReviewsSection as ReviewsSectionType, ReviewImage, FooterNavigationItem } from '@/types/student-reviews';
-import { ChevronLeft, ChevronRight, Star, Users, MessageCircle, Pause, Play, Award, TrendingUp, Heart } from 'lucide-react';
+import { StudentsReviewsSection as ReviewsSectionType, ReviewImage, FooterNavigationItem, SocialMediaIcon } from '@/types/student-reviews';
+import { ChevronLeft, ChevronRight, Star, Users, MessageCircle, Pause, Play, Award, TrendingUp, Heart, ExternalLink } from 'lucide-react';
+import { ReviewStatistics } from './StatisticsDataService';
 
-// Clean data fetching service (same as before)
+// Enhanced data fetching service with social media
 class ReviewsDataService {
   private supabase = createClientComponentClient();
 
@@ -44,21 +45,35 @@ class ReviewsDataService {
     return data || [];
   }
 
+  // NEW: Fetch social media icons
+  async fetchSocialMediaIcons(): Promise<SocialMediaIcon[]> {
+    const { data, error } = await this.supabase
+      .from('social_media_icons')
+      .select('*')
+      .eq('active', true)
+      .order('order_index', { ascending: true });
+
+    if (error) throw error;
+    return data || [];
+  }
+
   async fetchAllData() {
     try {
-      const [section, images, navigation] = await Promise.all([
+      const [section, images, navigation, socialMedia] = await Promise.all([
         this.fetchSectionData(),
         this.fetchReviewImages(),
-        this.fetchFooterNavigation()
+        this.fetchFooterNavigation(),
+        this.fetchSocialMediaIcons()
       ]);
 
-      return { section, images, navigation, error: null };
+      return { section, images, navigation, socialMedia, error: null };
     } catch (error) {
       console.error('Error fetching reviews data:', error);
       return {
         section: this.getFallbackSection(),
         images: this.getFallbackImages(),
         navigation: this.getFallbackNavigation(),
+        socialMedia: this.getFallbackSocialMedia(),
         error: error as Error
       };
     }
@@ -103,10 +118,94 @@ class ReviewsDataService {
       { id: '5', label: 'Teachers Login', href: '/teachers-login', is_external: false, order_index: 5, active: true, created_at: '' }
     ];
   }
+
+  // NEW: Fallback social media data
+  private getFallbackSocialMedia(): SocialMediaIcon[] {
+    return [
+      { id: '1', name: 'Facebook', icon_url: '/icons/facebook.svg', link_url: 'https://facebook.com', icon_color: '#1877F2', hover_color: '#166FE5', order_index: 1, active: true, created_at: '' },
+      { id: '2', name: 'Twitter', icon_url: '/icons/twitter.svg', link_url: 'https://twitter.com', icon_color: '#1DA1F2', hover_color: '#1A91DA', order_index: 2, active: true, created_at: '' },
+      { id: '3', name: 'Instagram', icon_url: '/icons/instagram.svg', link_url: 'https://instagram.com', icon_color: '#E4405F', hover_color: '#D73753', order_index: 3, active: true, created_at: '' },
+      { id: '4', name: 'YouTube', icon_url: '/icons/youtube.svg', link_url: 'https://youtube.com', icon_color: '#FF0000', hover_color: '#E60000', order_index: 4, active: true, created_at: '' }
+    ];
+  }
 }
 
-// Creative Horizontal Slider Component
+// Social Media Icons Component
+const SocialMediaIcons = ({ icons }: { icons: SocialMediaIcon[] }) => {
+  if (!icons.length) return null;
+
+  return (
+    <div className="flex justify-center items-center gap-4 sm:gap-6 mb-8">
+      <div className="flex items-center gap-1 text-gray-500 text-sm font-medium">
+        <span>Follow us:</span>
+      </div>
+      
+      <div className="flex items-center gap-3 sm:gap-4">
+        {icons.map((icon, index) => (
+          <Link
+            key={icon.id}
+            href={icon.link_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <div 
+              className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl"
+              style={{
+                backgroundColor: icon.icon_color || '#6B7280',
+              }}
+              onMouseEnter={(e) => {
+                if (icon.hover_color) {
+                  e.currentTarget.style.backgroundColor = icon.hover_color;
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = icon.icon_color || '#6B7280';
+              }}
+            >
+              {/* Icon Image */}
+              <div className="relative w-6 h-6 sm:w-7 sm:h-7">
+                <Image
+                  src={icon.icon_url}
+                  alt={`${icon.name} social media icon`}
+                  fill
+                  className="object-contain filter brightness-0 invert"
+                  sizes="28px"
+                />
+              </div>
+              
+              {/* Glow effect */}
+              <div 
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                style={{
+                  backgroundColor: icon.icon_color || '#6B7280',
+                  filter: 'blur(8px)',
+                  transform: 'scale(1.2)',
+                }}
+              ></div>
+              
+              {/* External link indicator */}
+              <ExternalLink 
+                className="absolute -top-1 -right-1 w-3 h-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 rounded-full p-0.5" 
+              />
+            </div>
+            
+            {/* Tooltip */}
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">
+              {icon.name}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900"></div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Keep your existing CreativeHorizontalSlider component as is...
 const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
+  // ... (same implementation as before)
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -248,15 +347,13 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
                         </span>
                       </div>
                       {isActive && (
-                        <div className="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full flex items-center gap-1 animate-fadeIn">
+                                                <div className="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full flex items-center gap-1 animate-fadeIn">
                           <Award className="w-3 h-3" />
                           Active
                         </div>
                       )}
                     </div>
                   </div>
-
-                  
 
                   {/* Shine Effect for Active Slide */}
                   {isActive && (
@@ -331,15 +428,18 @@ const CreativeHorizontalSlider = ({ images }: { images: ReviewImage[] }) => {
   );
 };
 
+// Main Component
 export default function StudentsReviewsSection() {
   const [data, setData] = useState<{
     section: ReviewsSectionType | null;
     images: ReviewImage[];
     navigation: FooterNavigationItem[];
+    socialMedia: SocialMediaIcon[]; // NEW: Added social media state
   }>({
     section: null,
     images: [],
-    navigation: []
+    navigation: [],
+    socialMedia: [] // NEW: Initialize social media array
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -354,7 +454,8 @@ export default function StudentsReviewsSection() {
       setData({
         section: result.section,
         images: result.images,
-        navigation: result.navigation
+        navigation: result.navigation,
+        socialMedia: result.socialMedia // NEW: Set social media data
       });
       setError(result.error);
       setLoading(false);
@@ -383,6 +484,14 @@ export default function StudentsReviewsSection() {
                 ))}
               </div>
             </div>
+
+            {/* Social Media Skeleton */}
+            <div className="flex justify-center items-center gap-4 mb-8">
+              <div className="h-4 bg-gray-200 rounded w-20"></div>
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="w-12 h-12 bg-gray-200 rounded-2xl"></div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -397,7 +506,7 @@ export default function StudentsReviewsSection() {
             <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
               <MessageCircle className="w-10 h-10 text-white" />
             </div>
-                        <h3 className="font-heading text-2xl sm:text-3xl font-bold text-red-800 mb-4">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-red-800 mb-4">
               Unable to Load Reviews
             </h3>
             <p className="text-red-600 text-lg mb-8 max-w-md mx-auto">
@@ -415,7 +524,7 @@ export default function StudentsReviewsSection() {
     );
   }
 
-  const { section, images, navigation } = data;
+  const { section, images, navigation, socialMedia } = data;
 
   return (
     <section className="w-full py-12 sm:py-20 lg:py-12 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden" id="reviews">
@@ -473,56 +582,7 @@ export default function StudentsReviewsSection() {
         {/* Premium Statistics Section */}
         <div className="relative mb-4 sm:mb-8">
           <div className="bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl border border-white/50">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 md:gap-12">
-              {/* Happy Students */}
-              <div className="text-center group">
-                <div className="relative mb-4 sm:mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                  </div>
-                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
-                </div>
-                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent mb-1 sm:mb-2">
-                  {images.length}+
-                </div>
-                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Happy Students</div>
-                <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
-              </div>
-              
-              {/* Average Rating */}
-              <div className="text-center group">
-                <div className="relative mb-4 sm:mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl">
-                    <div className="flex items-center gap-0.5 sm:gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className="w-2.5 h-2.5 sm:w-2 sm:h-2 text-white fill-current group-hover:scale-110 transition-transform duration-300" 
-                          style={{ animationDelay: `${i * 100}ms` }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
-                </div>
-                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-700 bg-clip-text text-transparent mb-1 sm:mb-2">4.9</div>
-                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Average Rating</div>
-                <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
-              </div>
-              
-              {/* Satisfaction Rate */}
-              <div className="text-center group">
-                <div className="relative mb-4 sm:mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[var(--color-accent)] from-emerald-500 to-teal-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                  </div>
-                  <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 bg-[var(--color-accent)] to-teal-600 rounded-xl sm:rounded-2xl mx-auto opacity-20 group-hover:scale-125 transition-transform duration-700"></div>
-                </div>
-                <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-[var(--color-accent)] to-teal-700 bg-clip-text text-transparent mb-1 sm:mb-2">98%</div>
-                <div className="font-body text-base sm:text-lg text-gray-600 font-medium">Satisfaction</div>
-                <div className="w-12 sm:w-16 h-1 bg-[var(--color-accent)] rounded-full mx-auto mt-3 sm:mt-4 group-hover:w-20 sm:group-hover:w-24 transition-all duration-500"></div>
-              </div>
-            </div>
+            <ReviewStatistics />
           </div>
         </div>
 
@@ -532,7 +592,7 @@ export default function StudentsReviewsSection() {
           <div className="relative w-full mb-16 rounded-3xl overflow-hidden shadow-2xl">
             <div className="aspect-[16/5] relative">
               <Image
-                                src={section.footer_frame_image_url}
+                src={section.footer_frame_image_url}
                 alt="Decorative Islamic frame"
                 fill
                 className="object-cover"
@@ -561,7 +621,10 @@ export default function StudentsReviewsSection() {
               </div>
             </div>
 
-            {/* Professional Navigation Menu - Desktop */}
+            {/* NEW: Social Media Icons */}
+            <SocialMediaIcons icons={socialMedia} />
+
+                        {/* Professional Navigation Menu - Desktop */}
             <div className="hidden md:block">
               <nav className="flex justify-center items-center gap-2 flex-wrap max-w-4xl mx-auto">
                 {navigation.map((item, index) => (

@@ -6,8 +6,13 @@ import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Course, CourseOutline, CoursesSection as CoursesSectionType } from '@/types/courses';
 import { Check, BookOpen, Users, GraduationCap, Globe } from 'lucide-react';
+import { MainStatistics } from './StatisticsDataService';
+
+// Import the MainStatistics component
+// import { MainStatistics } from '@/components/Statistics';
 
 export default function CoursesSection() {
+  // ... your existing state and useEffect code remains the same ...
   const [sectionData, setSectionData] = useState<CoursesSectionType | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
   const [courseOutlines, setCourseOutlines] = useState<{[key: string]: CourseOutline[]}>({});
@@ -61,7 +66,7 @@ export default function CoursesSection() {
 
       } catch (error) {
         console.error('Error fetching courses data:', error);
-        // Fallback data
+        // Your existing fallback data...
         setSectionData({
           id: '1',
           section_title: 'Our Courses',
@@ -77,7 +82,7 @@ export default function CoursesSection() {
             id: '1',
             title: 'Quran for Kids',
             slug: 'quran-for-kids',
-            description: 'The ideal approach with your child is to begin teaching them the Quran at a young age. We support you in this journey by teaching your child the principles of Quran and helping them grasp its meanings, which fosters their development and leads them to memorize the Quran by heart in short time.',
+            description: 'The ideal approach with your child is to begin teaching them the Quran at a young age.',
             image_url: '/images/quran-kids.jpg',
             image_alt: 'Children learning Quran',
             button_text: 'Join Us Now',
@@ -87,7 +92,6 @@ export default function CoursesSection() {
             created_at: '',
             updated_at: ''
           }
-          // Add other fallback courses...
         ];
 
         setCourses(fallbackCourses);
@@ -131,14 +135,13 @@ export default function CoursesSection() {
         
         {/* Section Header */}
         <div className="text-center mb-4">
-
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
             <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
               {sectionData.section_title}
             </span>
           </h2>
 
-          {sectionData.section_subtitle && (
+                    {sectionData.section_subtitle && (
             <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               {sectionData.section_subtitle}
             </p>
@@ -225,7 +228,7 @@ export default function CoursesSection() {
                     </div>
                   )}
 
-                  {/* CTA Button */}
+                  {/* CTA Button - uncommented if needed */}
                   {/* <div className="pt-2">
                     <Link
                       href={activeCourse.button_link}
@@ -267,23 +270,10 @@ export default function CoursesSection() {
           </div>
         )}
 
-        {/* Trust Indicators */}
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2">
-  {[
-    { IconComponent: Users, number: '1000+', label: 'Active Students' },
-    { IconComponent: GraduationCap, number: '50+', label: 'Expert Teachers' },
-    { IconComponent: BookOpen, number: '4', label: 'Course Categories' },
-    { IconComponent: Globe, number: '24/7', label: 'Support Available' },
-  ].map((stat, index) => (
-    <div key={index} className="text-center group">
-      <div className="inline-flex items-center justify-center w-12 h-12 md:w-18 md:h-18 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-        <stat.IconComponent className="w-4 h-4 md:w-8 md:h-8" />
-      </div>
-      <div className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
-      <div className="font-body text-gray-600 text-sm">{stat.label}</div>
-    </div>
-  ))}
-</div>
+        {/* REPLACE the hardcoded Trust Indicators with MainStatistics */}
+        <div className="mt-8">
+          <MainStatistics variant="inline" />
+        </div>
       </div>
     </section>
   );

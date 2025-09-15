@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { HeroContent } from '@/types/hero';
+import { BannerStatistics } from './StatisticsDataService';
 
 export default function HeroSection() {
   const [heroData, setHeroData] = useState<HeroContent | null>(null);
@@ -115,24 +116,11 @@ export default function HeroSection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 text-blue-200 font-body">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
+            <div className="pt-2">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-2 border border-white/20">
+                  <BannerStatistics />
                 </div>
-                <span className="text-sm">Certified Teachers</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="text-sm">1000+ Students</span>
-              </div>
-            </div>
           </div>
 
           {/* Right Column - Image */}
